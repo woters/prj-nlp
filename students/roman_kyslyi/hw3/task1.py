@@ -168,6 +168,7 @@ if (__name__ == "__main__"):
     all = (df3.size / total_corrections) * 100
     print(all) #19.4171285535
 
+
     #without correction and type
     df1.drop('CORRECTION',axis=1,inplace=True)
     df2.drop('CORRECTION', axis=1, inplace=True)
