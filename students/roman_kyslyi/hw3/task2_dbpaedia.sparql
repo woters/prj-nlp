@@ -1,0 +1,15 @@
+# execution: https://dbpedia.org/sparql
+# select all persons from db, limit 1000
+SELECT ?person
+WHERE
+{
+   ?person a dbo:Person .
+} LIMIT 1000
+
+# select person and all his relations
+SELECT ?person, ?relations
+WHERE
+{
+   ?person a dbo:Person .
+   ?person dbo:relation ?relations
+} limit 100
