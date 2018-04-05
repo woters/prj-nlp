@@ -135,30 +135,14 @@ if (__name__ == "__main__"):
     df2 = get_data_to_df(input_file2, parser)
 
 
-    total_corrections = df1.size
+    total_corrections = df2.size #take as total corrections second teacher, as he had more corrections
     print(total_corrections)
     #'NID', 'CORRECTION', 'TYPE', 'start_par', 'start_off', 'end_par', 'end_off'
 
     df3 = df2.merge(df1, left_on=df2.columns.tolist(), right_on=df1.columns.tolist(), how='inner')
     all = (df3.size / total_corrections) * 100
     print(df3.size)
-    print(all)
-
-    # without location
-    #df1.drop('start_par', axis=1, inplace=True)
-    #df2.drop('start_par', axis=1, inplace=True)
-    #df1.drop('end_par', axis=1, inplace=True)
-    #df2.drop('end_par', axis=1, inplace=True)
-    #df1.drop('start_off', axis=1, inplace=True)
-    #df2.drop('start_off', axis=1, inplace=True)
-    #df1.drop('end_off', axis=1, inplace=True)
-    #df2.drop('end_off', axis=1, inplace=True)
-
-    #df3 = df2.merge(df1, left_on=df2.columns.tolist(), right_on=df1.columns.tolist(), how='inner')
-    #all = (df3.size / total_corrections) * 100
-    #print(all) #33.6313248704
-
-
+    print(all) #13.3293305314
 
 
     #without type
@@ -166,7 +150,7 @@ if (__name__ == "__main__"):
     df2.drop('TYPE', axis=1, inplace=True)
     df3 = df2.merge(df1, left_on=df2.columns.tolist(), right_on=df1.columns.tolist(), how='inner')
     all = (df3.size / total_corrections) * 100
-    print(all) #19.4171285535
+    print(all) #13.9726379894
 
 
     #without correction and type
@@ -174,6 +158,10 @@ if (__name__ == "__main__"):
     df2.drop('CORRECTION', axis=1, inplace=True)
     df3 = df2.merge(df1, left_on=df2.columns.tolist(), right_on=df1.columns.tolist(), how='inner')
     all = (df3.size / total_corrections) * 100
-    print(all) #34.6266166041
+    print(all) #24.9174422095
 
-
+#RESULT:
+#using all parameters: 13.32%
+#without type: 13.97%
+#without type and correction: 24.91%
+#without correction but with type: 20.92%
